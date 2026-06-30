@@ -6,313 +6,368 @@
 <title>Merlas Swiss AG — бухгалтерия в реальном времени для компаний Цуга и Люцерна</title>
 <meta name="description" content="Merlas Swiss AG берёт на себя бухгалтерию и роль внешнего финансового директора для средних и крупных компаний в Цуге и Люцерне. Актуальные цифры каждый день — дешевле собственного отдела.">
 <style>
-@import url('assets/fonts/fonts.css');
+@import url('assets/fonts/merlas-fonts.css');
 :root{
-  --navy:#0c304e; --navy-d:#081f33; --gold:#ecb326; --gold-d:#bd8410;
-  --red:#d8232a; --ink:#0c304e; --black:#081f33;
-  --gray:#8b95a1; --body:#4a5560; --line:#e3e6ea; --tint:#f3f5f7; --cream:#0c304e;
+  --navy:#0C304E; --navy-d:#081f33; --gold:#ECB326; --gold-d:#c8941a;
+  --ink:#020101; --grey:#7A7A7A; --light:#F8F8F8; --line:#EAEAEA; --body:#5b6168;
   --green:#009b9f;
 }
 *{box-sizing:border-box;-webkit-font-smoothing:antialiased;}
 html{scroll-behavior:smooth;}
+body{margin:0;font-family:'Roboto',system-ui,sans-serif;color:var(--body);background:#fff;line-height:1.7;font-size:16px;}
 a{text-decoration:none;color:inherit;}
-body{margin:0;font-family:'Manrope',system-ui,sans-serif;color:var(--body);background:#fff;line-height:1.65;font-size:16px;}
-h1,h2,h3,h4{font-family:'Manrope',sans-serif;color:var(--navy);font-weight:800;line-height:1.16;margin:0;letter-spacing:-.01em;}
-.upper{text-transform:uppercase;letter-spacing:.01em;}
-.wrap{max-width:1180px;margin:0 auto;padding:0 26px;}
-.eyebrow{font-family:'Manrope',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.72rem;font-weight:700;color:var(--gold-d);}
-.h-sec{font-family:'Manrope',sans-serif;font-weight:800;color:var(--navy);font-size:clamp(1.6rem,3.2vw,2.3rem);letter-spacing:-.01em;line-height:1.18;}
-.rule{width:54px;height:3px;background:var(--gold);margin-top:18px;border-radius:2px;}
-.lead{font-size:1.06rem;color:var(--body);}
-.btn{display:inline-block;font-family:'Manrope',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;font-weight:700;
-  background:var(--gold);color:var(--navy);padding:15px 30px;border:1.5px solid var(--gold);transition:.2s;cursor:pointer;}
-.btn:hover{background:#ffcb3e;border-color:#ffcb3e;}
-.btn-out{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6);}
+h1,h2,h3,h4{font-family:'Bodoni Moda','Times New Roman',serif;color:var(--navy);font-weight:600;line-height:1.2;margin:0;}
+.wrap{max-width:1200px;margin:0 auto;padding:0 28px;}
+.kicker{font-family:'Roboto',sans-serif;text-transform:uppercase;letter-spacing:.18em;font-size:.74rem;font-weight:600;color:var(--gold-d);margin:0;}
+.sep{width:54px;height:3px;background:var(--gold);margin:14px 0 0;border-radius:2px;}
+.sep.center{margin-left:auto;margin-right:auto;}
+.h-sec{font-family:'Bodoni Moda',serif;font-weight:600;color:var(--navy);font-size:clamp(1.9rem,3.6vw,2.7rem);line-height:1.18;}
+.lead{font-size:1.05rem;color:var(--body);}
+.btn{display:inline-block;font-family:'Roboto',sans-serif;text-transform:uppercase;letter-spacing:.1em;font-size:.78rem;font-weight:600;
+  background:var(--gold);color:#fff;padding:16px 34px;border:2px solid var(--gold);transition:.22s;cursor:pointer;}
+.btn:hover{background:#d89f12;border-color:#d89f12;}
+.btn-out{background:transparent;color:#fff;border:2px solid rgba(255,255,255,.55);}
 .btn-out:hover{background:#fff;color:var(--navy);border-color:#fff;}
-.nav-a{font-family:'Manrope',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:.76rem;font-weight:700;color:rgba(255,255,255,.6);transition:color .2s;}
-.nav-a:hover{color:var(--gold);}
-.card{background:#fff;border:1px solid var(--line);padding:34px 28px;transition:transform .28s,box-shadow .28s,border-color .28s;border-radius:4px;}
-.card:hover{transform:translateY(-6px);box-shadow:0 24px 50px -28px rgba(12,48,78,.35);border-color:var(--gold);}
-.ico{width:46px;height:46px;color:var(--gold-d);margin-bottom:18px;}
-.ico svg{width:100%;height:100%;}
-.card h3{font-size:1.1rem;margin-bottom:10px;letter-spacing:0;}
-.card p{font-size:.95rem;color:var(--body);}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .75s cubic-bezier(.22,.61,.36,1),transform .75s cubic-bezier(.22,.61,.36,1);will-change:opacity,transform;}
-.reveal.in{opacity:1;transform:none;}
-/* анимация обложки — как на сайте Merlas (fadeInLeft / fadeInRight) */
+.btn-navy{background:var(--navy);border-color:var(--navy);color:#fff;}
+.btn-navy:hover{background:var(--navy-d);border-color:var(--navy-d);}
+
+/* ===== ШАПКА (как у Merlas: верхняя navy-полоса + основное меню) ===== */
+.topbar{background:var(--navy-d);color:rgba(255,255,255,.66);font-size:.82rem;}
+.topbar .wrap{height:40px;display:flex;align-items:center;justify-content:space-between;gap:18px;}
+.topbar a{color:rgba(255,255,255,.78);}
+.topbar a:hover{color:var(--gold);}
+header.nav{position:sticky;top:0;z-index:80;background:var(--navy);box-shadow:0 6px 24px -16px rgba(0,0,0,.6);}
+header.nav .wrap{height:84px;display:flex;align-items:center;justify-content:space-between;gap:22px;}
+header.nav img.logo{height:46px;width:auto;display:block;}
+.menu{display:flex;align-items:center;gap:clamp(16px,2.4vw,34px);}
+.menu a{font-family:'Roboto',sans-serif;text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;font-weight:600;color:rgba(255,255,255,.82);transition:color .2s;}
+.menu a:hover,.menu a.active{color:var(--gold);}
+.menu .btn{padding:12px 22px;font-size:.72rem;}
+#burger{display:none;background:none;border:none;color:#fff;cursor:pointer;}
+
+/* ===== HERO (полноширинное фото + navy-оверлей, как у них) ===== */
+.hero{position:relative;min-height:calc(100vh - 124px);display:flex;align-items:center;overflow:hidden;background:var(--navy);}
+.hero img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;animation:kenburns 12s ease-out both;}
+.hero .ov{position:absolute;inset:0;background:linear-gradient(100deg,rgba(8,24,43,.92) 0%,rgba(8,24,43,.78) 42%,rgba(8,24,43,.42) 100%);}
+.hero .inner{position:relative;z-index:2;max-width:660px;padding:70px 0;}
+
+/* секции */
+section{position:relative;}
+.pad{padding:clamp(64px,8vw,104px) 0;}
+.card{background:#fff;border:1px solid var(--line);padding:38px 30px;transition:transform .3s,box-shadow .3s,border-color .3s;height:100%;}
+.card:hover{transform:translateY(-8px);box-shadow:0 30px 60px -34px rgba(12,48,78,.4);border-color:var(--gold);}
+.card .ic{width:54px;height:54px;color:var(--gold);margin-bottom:20px;}
+.card .ic svg{width:100%;height:100%;}
+.card h3{font-size:1.3rem;margin-bottom:12px;}
+.card p{font-size:.95rem;color:var(--body);margin:0;}
+
+/* анимации — как на сайте Merlas */
 @keyframes fadeInLeft{from{opacity:0;transform:translateX(-46px)}to{opacity:1;transform:none}}
 @keyframes fadeInRight{from{opacity:0;transform:translateX(46px)}to{opacity:1;transform:none}}
-@keyframes kenburns{from{transform:scale(1.08)}to{transform:scale(1)}}
-@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.anim-left{animation:fadeInLeft .9s cubic-bezier(.22,.61,.36,1) .15s both;}
-.anim-right{animation:fadeInRight 1s cubic-bezier(.22,.61,.36,1) .1s both;}
-.kenburns{animation:kenburns 9s ease-out both;}
-.floaty{animation:floaty 4.5s ease-in-out 1.2s infinite;}
+@keyframes kenburns{from{transform:scale(1.1)}to{transform:scale(1)}}
+.anim-left{animation:fadeInLeft 1s cubic-bezier(.22,.61,.36,1) .15s both;}
+.anim-right{animation:fadeInRight 1s cubic-bezier(.22,.61,.36,1) .15s both;}
+.reveal{opacity:0;transform:translateY(30px);transition:opacity .8s cubic-bezier(.22,.61,.36,1),transform .8s cubic-bezier(.22,.61,.36,1);will-change:opacity,transform;}
+.reveal.in{opacity:1;transform:none;}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto;}.reveal{opacity:1;transform:none;}}
-#toTop{position:fixed;right:24px;bottom:24px;z-index:60;width:46px;height:46px;background:rgba(12,48,78,.7);color:#fff;border:none;border-radius:4px;cursor:pointer;display:flex;align-items:center;justify-content:center;-webkit-backdrop-filter:blur(4px);backdrop-filter:blur(4px);box-shadow:0 10px 24px -12px rgba(12,48,78,.5);opacity:0;visibility:hidden;transform:translateY(12px);transition:opacity .3s,transform .3s,background .2s;}
-#toTop.show{opacity:1;visibility:visible;transform:none;}#toTop:hover{background:var(--gold);color:var(--navy);}
-@media(max-width:880px){.hide-mob{display:none!important;}.hero-grid{grid-template-columns:1fr!important;}.hero-photo{min-height:300px;}}
+
+#toTop{position:fixed;right:24px;bottom:24px;z-index:60;width:48px;height:48px;background:var(--gold);color:#fff;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 12px 28px -12px rgba(12,48,78,.5);opacity:0;visibility:hidden;transform:translateY(12px);transition:.3s;}
+#toTop.show{opacity:1;visibility:visible;transform:none;}#toTop:hover{background:var(--navy);}
+
+@media(max-width:900px){
+  .menu{position:fixed;inset:124px 0 auto 0;background:var(--navy-d);flex-direction:column;gap:0;padding:8px 0;transform:translateY(-130%);transition:transform .3s;}
+  .menu.open{transform:none;}
+  .menu a{padding:14px 28px;width:100%;border-bottom:1px solid rgba(255,255,255,.07);}
+  .menu .btn{margin:12px 28px;text-align:center;}
+  #burger{display:block;}
+  .two-col{grid-template-columns:1fr!important;}
+  .topbar .wrap{justify-content:center;}
+  .hide-mob{display:none!important;}
+}
 </style>
 </head>
 <body>
 
-<!-- ===== ОБЛОЖКА (две равные половины, без верхней шапки) ===== -->
-<section id="top" style="min-height:100svh;display:flex;flex-direction:column;">
-  <div class="hero-grid" style="flex:1;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr;min-height:0;">
-    <!-- левая половина: тёмно-синяя панель, как плашка логотипа Merlas -->
-    <div style="display:flex;flex-direction:column;background:var(--navy);padding:34px clamp(26px,5vw,72px);position:relative;overflow:hidden;">
-      <div style="position:absolute;top:-120px;right:-120px;width:360px;height:360px;border-radius:50%;background:radial-gradient(circle,rgba(236,179,38,.14),transparent 70%);pointer-events:none;"></div>
-      <a href="#top" aria-label="Merlas Swiss AG" style="flex-shrink:0;position:relative;z-index:2;"><img src="assets/img/logo-merlas.png?v=1" alt="Merlas Swiss AG" style="height:54px;width:auto;display:block;"></a>
-      <div style="flex:1;display:flex;align-items:center;position:relative;z-index:2;">
-      <div class="anim-left" style="max-width:540px;">
-        <p class="eyebrow" style="margin-bottom:18px;color:var(--gold);">Для средних и крупных компаний в Цуге и Люцерне</p>
-        <h1 style="color:#fff;font-size:clamp(1.95rem,3.7vw,2.95rem);letter-spacing:-.015em;line-height:1.12;margin-bottom:20px;">Финансы вашей компании — в реальном времени</h1>
-        <p class="lead" style="margin-bottom:28px;color:rgba(255,255,255,.82);">Merlas Swiss берёт на себя бухгалтерию и роль внешнего финансового директора. Актуальная картина бизнеса каждый день — при затратах ниже, чем у собственного отдела.</p>
-        <div style="display:flex;flex-wrap:wrap;gap:14px;">
-          <a href="#contact" class="btn">Запросить предложение</a>
-          <a href="#stoimost" class="btn btn-out">Смотреть стоимость</a>
-        </div>
-        <div style="display:flex;align-items:center;gap:12px;margin-top:30px;">
-          <span style="display:inline-flex;width:22px;height:22px;background:var(--red);border-radius:50%;align-items:center;justify-content:center;flex-shrink:0;"><svg width="12" height="12" viewBox="0 0 24 24" fill="#fff"><rect x="9.5" y="4" width="5" height="16"/><rect x="4" y="9.5" width="16" height="5"/></svg></span>
-          <span style="font-size:.84rem;color:rgba(255,255,255,.78);letter-spacing:.02em;">Десятилетия опыта в финансовом и страховом консалтинге · <b style="color:#fff;">Swiss made</b></span>
-        </div>
-      </div>
-      </div>
-    </div>
-    <!-- правая половина: премиальное фото Центральной Швейцарии -->
-    <div class="hero-photo anim-right" style="position:relative;overflow:hidden;background:var(--navy-d);">
-      <img class="kenburns" src="assets/img/building.jpg?v=1" alt="Центральная Швейцария — Цуг и Люцерн" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 52%;">
-      <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,48,78,.45) 0%,rgba(12,48,78,.08) 40%,transparent 100%);"></div>
-    </div>
-  </div>
-  <!-- тёмная полоса-меню (как нав-бар их сайта) -->
-  <nav style="background:var(--navy-d);">
-    <div class="wrap" style="height:58px;display:flex;align-items:center;justify-content:center;gap:clamp(16px,4vw,44px);flex-wrap:wrap;">
-      <a href="#top" class="nav-a">Старт</a>
-      <a href="#uslugi" class="nav-a">Услуги</a>
-      <a href="#preimushchestva" class="nav-a">Преимущества</a>
-      <a href="#stoimost" class="nav-a">Стоимость</a>
-      <a href="#region" class="nav-a">Регион</a>
-      <a href="#contact" class="nav-a">Контакт</a>
-    </div>
-  </nav>
-</section>
-
-<!-- ===== СДВИГ ===== -->
-<section style="padding:88px 0;background:#fff;">
+<!-- ===== ШАПКА ===== -->
+<div class="topbar">
   <div class="wrap">
-    <div class="reveal" style="text-align:center;max-width:720px;margin:0 auto 52px;">
-      <p class="eyebrow">Что меняется</p>
-      <h2 class="h-sec" style="margin-top:12px;">Раньше — свой штат.<br>Теперь — реальное время.</h2>
-      <div class="rule" style="margin:18px auto 0;"></div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;">
-      <div class="reveal" style="padding:40px 36px;border-right:1px solid var(--line);">
-        <h3 class="upper" style="font-size:1.05rem;letter-spacing:.06em;color:var(--gray);margin-bottom:22px;">Раньше</h3>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:15px;">
-          <li style="display:flex;gap:12px;"><span style="color:var(--gold-d);font-weight:800;">—</span>Отчётность раз в квартал — решения почти вслепую</li>
-          <li style="display:flex;gap:12px;"><span style="color:var(--gold-d);font-weight:800;">—</span>Свой бухгалтер в Цуге — <b style="color:var(--navy);white-space:nowrap;">CHF 110 000+</b> в год</li>
-          <li style="display:flex;gap:12px;"><span style="color:var(--gold-d);font-weight:800;">—</span>Рутина отнимает время у основного бизнеса</li>
-          <li style="display:flex;gap:12px;"><span style="color:var(--gold-d);font-weight:800;">—</span>Ошибки в цифрах всплывают слишком поздно</li>
-        </ul>
-      </div>
-      <div class="reveal" style="padding:40px 36px;background:var(--navy);color:#dde6ee;">
-        <h3 class="upper" style="font-size:1.05rem;letter-spacing:.06em;color:var(--gold);margin-bottom:22px;">С Merlas Swiss</h3>
-        <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:15px;">
-          <li style="display:flex;gap:12px;"><span style="color:var(--gold);">✓</span>Актуальные цифры каждый день</li>
-          <li style="display:flex;gap:12px;"><span style="color:var(--gold);">✓</span>Команда экспертов вместо собственного штата</li>
-          <li style="display:flex;gap:12px;"><span style="color:var(--gold);">✓</span>Вы — основным бизнесом, мы — цифрами</li>
-          <li style="display:flex;gap:12px;"><span style="color:var(--gold);">✓</span>Ошибки видны сразу — через сверку с источником</li>
-        </ul>
-      </div>
-    </div>
+    <span class="hide-mob">Финансовый и страховой консалтинг · Цуг &amp; Люцерн</span>
+    <span><a href="mailto:info@merlas.swiss">info@merlas.swiss</a></span>
   </div>
-</section>
-
-<!-- ===== УСЛУГИ ===== -->
-<section id="uslugi" style="padding:88px 0;background:var(--tint);">
+</div>
+<header class="nav" id="top">
   <div class="wrap">
-    <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 52px;">
-      <p class="eyebrow">Что мы делаем для вас</p>
-      <h2 class="h-sec" style="margin-top:12px;">Вся финансовая функция — на аутсорсе</h2>
-      <div class="rule" style="margin:18px auto 0;"></div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:24px;">
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v5.5l3.5 2"/></svg></div><h3>Бухгалтерия в реальном времени</h3><p>Баланс, отчёт о прибыли, статус НДС, дебиторы и кредиторы — актуально каждый день, а не к концу квартала.</p></div>
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3.5-4 3 3 5.5-6.5"/></svg></div><h3>Внешний финансовый директор</h3><p>Digitaler CFO: управленческая отчётность, бюджеты, консолидация группы, ежеквартальные встречи. Решения вместо таблиц.</p></div>
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Мультивалютный учёт EUR/CHF</h3><p>Параллельные книги в EUR и CHF до раппена — для торговых и холдинговых компаний Цуга, работающих с Европой.</p></div>
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="7" rx="1"/><rect x="14" y="4" width="7" height="7" rx="1"/><rect x="3" y="15" width="7" height="5" rx="1"/><rect x="14" y="15" width="7" height="5" rx="1"/></svg></div><h3>Учёт по направлениям и филиалам</h3><p>Каждое направление, филиал или отдел — как отдельный центр прибыли. Видно, где вы зарабатываете, а где теряете.</p></div>
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 8-9 9-5.5-1-9-4-9-9V6l9-3 9 3z"/></svg></div><h3>Точность до раппена</h3><p>Каждая цифра сверена с банком, НДС-регистром и зарплатой. Мы находим то, что Excel пропускает.</p></div>
-      <div class="card reveal"><div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 9h18M8 21h8M12 17v4"/></svg></div><h3>Защищённый портал Merlas</h3><p>Передавайте документы как удобно — e-mail, фото, PDF — и видьте финансовую картину онлайн в любой момент.</p></div>
+    <a href="#top" aria-label="Merlas Swiss AG"><img class="logo" src="assets/img/logo-merlas.png?v=2" alt="Merlas Swiss AG"></a>
+    <button id="burger" aria-label="Меню"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M3 12h18M3 18h18"/></svg></button>
+    <nav class="menu" id="menu">
+      <a href="#top" class="active">Главная</a>
+      <a href="#uslugi">Услуги</a>
+      <a href="#faktory">Преимущества</a>
+      <a href="#workflow">Как работаем</a>
+      <a href="#stoimost">Стоимость</a>
+      <a href="#contact" class="btn">Связаться</a>
+    </nav>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <img class="bg" src="assets/img/hero.jpg?v=2" alt="Деловая встреча — Merlas Swiss">
+  <div class="ov"></div>
+  <div class="wrap">
+    <div class="inner anim-left">
+      <p class="kicker" style="color:var(--gold);">Для средних и крупных компаний в Цуге и Люцерне</p>
+      <div class="sep"></div>
+      <h1 style="color:#fff;font-size:clamp(2.1rem,4.6vw,3.5rem);margin:22px 0 20px;line-height:1.14;">Финансы вашей компании —<br>в реальном времени</h1>
+      <p class="lead" style="color:rgba(255,255,255,.86);max-width:560px;margin-bottom:34px;">Merlas Swiss берёт на себя бухгалтерию и роль внешнего финансового директора. Актуальная картина бизнеса каждый день — при затратах ниже, чем у собственного отдела.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:14px;">
+        <a href="#contact" class="btn">Запросить предложение</a>
+        <a href="#stoimost" class="btn btn-out">Смотреть стоимость</a>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ===== ПРЕИМУЩЕСТВА (тёмный баннер) ===== -->
-<section id="preimushchestva" style="padding:92px 0;background:var(--navy);color:#dde6ee;">
-  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:center;">
+<!-- ===== ИНТРО (фото + текст, как «Wir engagieren uns für Sie») ===== -->
+<section class="pad" style="background:#fff;">
+  <div class="wrap two-col" style="display:grid;grid-template-columns:1fr 1fr;gap:clamp(36px,5vw,72px);align-items:center;">
+    <div class="reveal" style="position:relative;">
+      <img src="assets/img/team.jpg?v=2" alt="Команда Merlas Swiss" style="width:100%;height:100%;max-height:460px;object-fit:cover;display:block;">
+      <span style="position:absolute;left:-1px;bottom:-1px;background:var(--gold);color:#fff;font-family:'Bodoni Moda',serif;font-size:1.05rem;padding:18px 26px;max-width:230px;line-height:1.25;">Десятилетия опыта в финансах</span>
+    </div>
     <div class="reveal">
-      <p class="eyebrow" style="color:var(--gold);">Почему Merlas Swiss</p>
-      <h2 class="upper" style="color:#fff;font-size:clamp(1.7rem,3.2vw,2.4rem);letter-spacing:-.01em;margin:14px 0 22px;line-height:1.2;">Масштаб крупной компании — без собственного отдела</h2>
-      <p style="color:#b6c2cf;margin-bottom:16px;">Вы получаете финансовую функцию корпоративного уровня — команду экспертов и технологию реального времени — вместо того чтобы строить и содержать собственную бухгалтерию. Ответственность несёт <b style="color:#fff;">Merlas Swiss AG</b> — десятилетия опыта в финансовом и страховом консалтинге.</p>
-      <p style="color:#b6c2cf;">Мы работаем в <b style="color:#fff;">Цуге</b> и <b style="color:#fff;">Люцерне</b> и знаем ваш рынок — от торгово-холдингового хаба Цуга до операционного бизнеса Люцерна. Свой бизнес вы видите в реальном времени, а данные остаются в Швейцарии.</p>
+      <p class="kicker">Добро пожаловать</p>
+      <div class="sep"></div>
+      <h2 class="h-sec" style="margin:18px 0 18px;">Мы работаем ради вашего результата</h2>
+      <p style="margin-bottom:16px;">Merlas Swiss AG — финансовый и страховой консалтинг с десятилетиями опыта. Мы берём на себя всю рутину бухгалтерии и финансового управления, чтобы вы как собственник и руководитель могли сосредоточиться на основном бизнесе.</p>
+      <p style="margin-bottom:24px;">Технология реального времени даёт вам актуальную финансовую картину каждый день — а не отчёт раз в квартал. Вы видите, где зарабатываете, и принимаете решения по сегодняшним цифрам.</p>
+      <ul style="list-style:none;padding:0;margin:0 0 30px;display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+        <li style="display:flex;gap:10px;align-items:center;font-size:.95rem;color:var(--navy);font-weight:500;"><span style="color:var(--gold);font-weight:700;">✓</span>Команда экспертов</li>
+        <li style="display:flex;gap:10px;align-items:center;font-size:.95rem;color:var(--navy);font-weight:500;"><span style="color:var(--gold);font-weight:700;">✓</span>Данные в Швейцарии</li>
+        <li style="display:flex;gap:10px;align-items:center;font-size:.95rem;color:var(--navy);font-weight:500;"><span style="color:var(--gold);font-weight:700;">✓</span>Учёт EUR/CHF</li>
+        <li style="display:flex;gap:10px;align-items:center;font-size:.95rem;color:var(--navy);font-weight:500;"><span style="color:var(--gold);font-weight:700;">✓</span>Полная поддержка</li>
+      </ul>
+      <a href="#uslugi" class="btn">Наши услуги</a>
     </div>
-    <div class="reveal" style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.12);border-radius:4px;overflow:hidden;">
-      <div style="background:var(--navy);padding:28px 24px;"><div style="font-weight:800;font-size:1.9rem;color:var(--gold);">CH</div><div style="font-size:.86rem;color:#b6c2cf;margin-top:6px;">Данные в Швейцарии</div></div>
-      <div style="background:var(--navy);padding:28px 24px;"><div style="font-weight:800;font-size:1.9rem;color:var(--gold);">ZG·LU</div><div style="font-size:.86rem;color:#b6c2cf;margin-top:6px;">Цуг и Люцерн</div></div>
-      <div style="background:var(--navy);padding:28px 24px;"><div style="font-weight:800;font-size:1.9rem;color:var(--gold);">EUR/CHF</div><div style="font-size:.86rem;color:#b6c2cf;margin-top:6px;">Мультивалюта</div></div>
-      <div style="background:var(--navy);padding:28px 24px;"><div style="font-weight:800;font-size:1.9rem;color:var(--gold);">24/7</div><div style="font-size:.86rem;color:#b6c2cf;margin-top:6px;">Доступ к цифрам онлайн</div></div>
+  </div>
+</section>
+
+<!-- ===== NAVY-СЕКЦИЯ (как «Wir kreiren perfekte Lösungen» + золотой блок) ===== -->
+<section class="pad" style="background:var(--navy);overflow:hidden;">
+  <div class="wrap two-col" style="display:grid;grid-template-columns:1.05fr .95fr;gap:clamp(34px,4vw,64px);align-items:center;">
+    <div class="reveal">
+      <p class="kicker" style="color:var(--gold);">Наше обещание ценности</p>
+      <div class="sep"></div>
+      <h2 class="h-sec" style="color:#fff;margin:18px 0 18px;">Платите за результат,<br>а не за штат</h2>
+      <p style="color:rgba(255,255,255,.8);margin-bottom:28px;max-width:520px;">Своя бухгалтерия в Цуге обходится дорого. С Merlas вы получаете финансовую функцию корпоративного уровня — при затратах заметно ниже собственного отдела.</p>
+      <div style="display:flex;flex-direction:column;gap:18px;max-width:520px;">
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:.9rem;color:#fff;margin-bottom:7px;"><span>Экономия против штатного бухгалтера</span><b style="color:var(--gold);">до 70%</b></div>
+          <div style="height:8px;background:rgba(255,255,255,.14);border-radius:5px;overflow:hidden;"><i class="bar" style="display:block;height:100%;width:70%;background:var(--gold);border-radius:5px;"></i></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:.9rem;color:#fff;margin-bottom:7px;"><span>Экономия против команды 2–4 человек</span><b style="color:var(--gold);">до 80%</b></div>
+          <div style="height:8px;background:rgba(255,255,255,.14);border-radius:5px;overflow:hidden;"><i class="bar" style="display:block;height:100%;width:80%;background:var(--gold);border-radius:5px;"></i></div>
+        </div>
+        <div>
+          <div style="display:flex;justify-content:space-between;font-size:.9rem;color:#fff;margin-bottom:7px;"><span>Доступ к финансовой картине</span><b style="color:var(--gold);">24/7</b></div>
+          <div style="height:8px;background:rgba(255,255,255,.14);border-radius:5px;overflow:hidden;"><i class="bar" style="display:block;height:100%;width:100%;background:var(--gold);border-radius:5px;"></i></div>
+        </div>
+      </div>
+    </div>
+    <div class="reveal" style="position:relative;">
+      <img src="assets/img/advisor.jpg?v=2" alt="Финансовая консультация" style="width:100%;height:100%;max-height:430px;object-fit:cover;display:block;">
+      <div style="position:absolute;right:18px;bottom:18px;background:var(--gold);color:var(--navy);padding:24px 26px;max-width:240px;">
+        <div style="font-family:'Bodoni Moda',serif;font-size:1.35rem;font-weight:600;line-height:1.2;">Снижайте расходы вместе с нами</div>
+        <a href="#stoimost" style="display:inline-block;margin-top:12px;font-size:.74rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--navy);border-bottom:2px solid var(--navy);">К стоимости →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== УСЛУГИ (как «Guter Service von A bis Z») ===== -->
+<section id="uslugi" class="pad" style="background:var(--light);">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 56px;">
+      <p class="kicker">Наши услуги</p>
+      <div class="sep center"></div>
+      <h2 class="h-sec" style="margin-top:16px;">Хороший сервис от А до Я</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:26px;">
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 6.5v5.5l3.5 2"/></svg></div><h3>Бухгалтерия в реальном времени</h3><p>Баланс, отчёт о прибыли, статус НДС, дебиторы и кредиторы — актуально каждый день, а не к концу квартала.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M7 14l3.5-4 3 3 5.5-6.5"/></svg></div><h3>Внешний финансовый директор</h3><p>Digitaler CFO: управленческая отчётность, бюджеты, консолидация группы, ежеквартальные встречи. Решения вместо таблиц.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c3 3 3 15 0 18M12 3c-3 3-3 15 0 18"/></svg></div><h3>Мультивалютный учёт EUR/CHF</h3><p>Параллельные книги в EUR и CHF до раппена — для торговых и холдинговых компаний Цуга, работающих с Европой.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="7" height="7" rx="1"/><rect x="14" y="4" width="7" height="7" rx="1"/><rect x="3" y="15" width="7" height="5" rx="1"/><rect x="14" y="15" width="7" height="5" rx="1"/></svg></div><h3>Учёт по направлениям и филиалам</h3><p>Каждое направление, филиал или отдел — как отдельный центр прибыли. Видно, где вы зарабатываете, а где теряете.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 8-9 9-5.5-1-9-4-9-9V6l9-3 9 3z"/></svg></div><h3>Точность до раппена</h3><p>Каждая цифра сверена с банком, НДС-регистром и зарплатой. Мы находим то, что Excel пропускает.</p></div>
+      <div class="card reveal"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M3 9h18M8 21h8M12 17v4"/></svg></div><h3>Защищённый портал Merlas</h3><p>Передавайте документы как удобно — e-mail, фото, PDF — и видьте финансовую картину онлайн в любой момент.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ФАКТОРЫ (как «Die entscheidenden Erfolgsfaktoren») ===== -->
+<section id="faktory" class="pad" style="background:#fff;">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;max-width:680px;margin:0 auto 56px;">
+      <p class="kicker">Почему Merlas Swiss</p>
+      <div class="sep center"></div>
+      <h2 class="h-sec" style="margin-top:16px;">Решающие факторы успеха</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:32px;">
+      <div class="reveal" style="text-align:center;">
+        <div style="width:78px;height:78px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;color:var(--gold);"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 12l2 2 4-4"/><path d="M21 12c0 5-3.5 8-9 9-5.5-1-9-4-9-9V6l9-3 9 3z"/></svg></div>
+        <h3 style="font-size:1.25rem;margin-bottom:10px;">Надёжно</h3><p style="font-size:.95rem;margin:0;">Данные размещены в Швейцарии, контроль качества на каждом шаге, ответственность фирмы.</p>
+      </div>
+      <div class="reveal" style="text-align:center;">
+        <div style="width:78px;height:78px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;color:var(--gold);"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3 style="font-size:1.25rem;margin-bottom:10px;">100% поддержка</h3><p style="font-size:.95rem;margin:0;">Команда на связи, доступ к вашей финансовой картине онлайн 24/7 и регулярные встречи.</p>
+      </div>
+      <div class="reveal" style="text-align:center;">
+        <div style="width:78px;height:78px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;color:var(--gold);"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h7l-1 8 10-12h-7z"/></svg></div>
+        <h3 style="font-size:1.25rem;margin-bottom:10px;">Эффективно</h3><p style="font-size:.95rem;margin:0;">Реальное время вместо квартальных отчётов, ошибки видны сразу через сверку с источником.</p>
+      </div>
+      <div class="reveal" style="text-align:center;">
+        <div style="width:78px;height:78px;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 22px;color:var(--gold);"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l2.4 7.4H22l-6 4.4 2.3 7.4L12 16.8 5.7 21.2 8 13.8 2 9.4h7.6z"/></svg></div>
+        <h3 style="font-size:1.25rem;margin-bottom:10px;">Профессионально</h3><p style="font-size:.95rem;margin:0;">Десятилетия опыта в финансах и страховании, отчётность на уровне финансового директора.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WORKFLOW (как «Einfache Arbeitsschritte» 01/02/03) ===== -->
+<section id="workflow" class="pad" style="background:var(--light);">
+  <div class="wrap">
+    <div class="reveal" style="text-align:center;max-width:700px;margin:0 auto 60px;">
+      <p class="kicker">Как мы работаем</p>
+      <div class="sep center"></div>
+      <h2 class="h-sec" style="margin-top:16px;">Простые шаги, которые экономят ваше время</h2>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:32px;">
+      <div class="reveal" style="background:#fff;border:1px solid var(--line);padding:40px 32px;position:relative;">
+        <div style="font-family:'Bodoni Moda',serif;font-size:3rem;font-weight:600;color:var(--gold);line-height:1;">01.</div>
+        <h3 style="font-size:1.3rem;margin:14px 0 10px;">Вы передаёте документы</h3>
+        <p style="font-size:.95rem;margin:0;">E-mail, фото, PDF-выписки или загрузка через портал. Без внедрения софта и переобучения команды.</p>
+      </div>
+      <div class="reveal" style="background:#fff;border:1px solid var(--line);padding:40px 32px;position:relative;">
+        <div style="font-family:'Bodoni Moda',serif;font-size:3rem;font-weight:600;color:var(--gold);line-height:1;">02.</div>
+        <h3 style="font-size:1.3rem;margin:14px 0 10px;">Мы ведём учёт в реальном времени</h3>
+        <p style="font-size:.95rem;margin:0;">Проводки, сверка с источником, НДС, зарплата — с контролем качества. Данные остаются в Швейцарии.</p>
+      </div>
+      <div class="reveal" style="background:#fff;border:1px solid var(--line);padding:40px 32px;position:relative;">
+        <div style="font-family:'Bodoni Moda',serif;font-size:3rem;font-weight:600;color:var(--gold);line-height:1;">03.</div>
+        <h3 style="font-size:1.3rem;margin:14px 0 10px;">Вы видите картину каждый день</h3>
+        <p style="font-size:.95rem;margin:0;">Баланс, прибыль, НДС, аналитика по филиалам — в реальном времени, плюс отчётность на уровне финдиректора.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ===== СТОИМОСТЬ ===== -->
-<section id="stoimost" style="padding:88px 0;background:#fff;">
+<section id="stoimost" class="pad" style="background:#fff;">
   <div class="wrap">
-    <div class="reveal" style="text-align:center;max-width:760px;margin:0 auto 30px;">
-      <p class="eyebrow">Стоимость</p>
-      <h2 class="h-sec" style="margin-top:12px;">Во сколько обходится собственная бухгалтерия?</h2>
-      <div class="rule" style="margin:18px auto 0;"></div>
+    <div class="reveal" style="text-align:center;max-width:780px;margin:0 auto 30px;">
+      <p class="kicker">Стоимость</p>
+      <div class="sep center"></div>
+      <h2 class="h-sec" style="margin-top:16px;">Во сколько обходится собственная бухгалтерия?</h2>
       <p class="lead" style="margin-top:20px;">Цуг — один из самых дорогих кантонов по зарплатам в Швейцарии. С учётом соцвзносов и рабочего места специалист обходится более чем в <b style="color:var(--navy);">CHF 110 000</b> в год, а команда — в несколько сотен тысяч. С Merlas вы получаете больше — и платите заметно меньше.</p>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border:1px solid var(--line);border-radius:4px;overflow:hidden;margin:42px 0 54px;">
-      <div class="reveal" style="padding:30px;text-align:center;border-right:1px solid var(--line);"><div style="font-weight:800;font-size:1.8rem;color:var(--gold-d);">≈ 110–115k</div><div style="margin-top:8px;font-size:.9rem;">CHF/год — свой бухгалтер (Цуг, полные затраты)</div></div>
-      <div class="reveal" style="padding:30px;text-align:center;border-right:1px solid var(--line);"><div style="font-weight:800;font-size:1.8rem;color:var(--gold-d);">150–165k</div><div style="margin-top:8px;font-size:.9rem;">CHF/год — руководитель бухгалтерии</div></div>
-      <div class="reveal" style="padding:30px;text-align:center;"><div style="font-weight:800;font-size:1.8rem;color:var(--gold-d);">210–460k</div><div style="margin-top:8px;font-size:.9rem;">CHF/год — собственная команда из 2–4 человек</div></div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;border:1px solid var(--line);margin:40px 0 56px;">
+      <div class="reveal" style="padding:32px;text-align:center;border-right:1px solid var(--line);"><div style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:1.9rem;color:var(--gold-d);">≈ 110–115k</div><div style="margin-top:8px;font-size:.9rem;">CHF/год — свой бухгалтер (Цуг, полные затраты)</div></div>
+      <div class="reveal" style="padding:32px;text-align:center;border-right:1px solid var(--line);"><div style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:1.9rem;color:var(--gold-d);">150–165k</div><div style="margin-top:8px;font-size:.9rem;">CHF/год — руководитель бухгалтерии</div></div>
+      <div class="reveal" style="padding:32px;text-align:center;"><div style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:1.9rem;color:var(--gold-d);">210–460k</div><div style="margin-top:8px;font-size:.9rem;">CHF/год — собственная команда из 2–4 человек</div></div>
     </div>
-    <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 36px;">
-      <h3 class="upper" style="font-size:1.25rem;letter-spacing:.02em;">Прозрачные пакеты — под размер вашей компании</h3>
-      <p style="font-size:.95rem;margin-top:6px;">Выберите свой уровень — и платите за результат, а не за штат.</p>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:stretch;">
-      <div class="reveal" style="background:#fff;border:1px solid var(--line);padding:34px 28px;display:flex;flex-direction:column;border-radius:4px;">
-        <span class="eyebrow">Real-Time Books</span>
-        <p style="font-size:.86rem;margin-top:8px;color:var(--gray);">Среднее предприятие · 10–49 сотрудников</p>
-        <div style="margin:18px 0;"><span style="font-weight:800;font-size:1.7rem;color:var(--navy);">от 18k</span><span style="font-size:.85rem;color:var(--gray);"> CHF / год</span></div>
-        <ul style="list-style:none;padding:0;margin:0;flex:1;display:flex;flex-direction:column;gap:9px;font-size:.92rem;color:var(--navy);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:26px;align-items:stretch;">
+      <div class="reveal" style="background:#fff;border:1px solid var(--line);padding:36px 30px;display:flex;flex-direction:column;">
+        <p class="kicker">Real-Time Books</p>
+        <p style="font-size:.86rem;margin:10px 0 0;color:var(--grey);">Среднее предприятие · 10–49 сотрудников</p>
+        <div style="margin:16px 0;"><span style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:1.9rem;color:var(--navy);">от 18k</span><span style="font-size:.85rem;color:var(--grey);"> CHF / год</span></div>
+        <ul style="list-style:none;padding:0;margin:0;flex:1;display:flex;flex-direction:column;gap:10px;font-size:.93rem;color:var(--navy);">
           <li>· Учёт в реальном времени, НДС, дебиторы/кредиторы</li><li>· Защищённый портал Merlas</li><li>· Регулярная отчётность</li>
         </ul>
-        <p style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:.86rem;color:var(--gray);">До <b style="color:var(--gold-d);">70%</b> дешевле собственного бухгалтера</p>
+        <p style="margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:.86rem;color:var(--grey);">До <b style="color:var(--gold-d);">70%</b> дешевле собственного бухгалтера</p>
       </div>
-      <div class="reveal" style="background:var(--navy);color:#dde6ee;padding:36px 28px;display:flex;flex-direction:column;position:relative;border-radius:4px;">
-        <span style="position:absolute;top:18px;right:18px;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:5px 10px;font-weight:800;border-radius:3px;">Выбирают чаще всего</span>
-        <span class="eyebrow" style="color:var(--gold);">Finance Partner</span>
-        <p style="font-size:.86rem;margin-top:8px;color:#a9b6c4;">Компания · 50–249 сотрудников</p>
-        <div style="margin:18px 0;"><span style="font-weight:800;font-size:1.7rem;color:#fff;">от 36k</span><span style="font-size:.85rem;color:#a9b6c4;"> CHF / год</span></div>
-        <ul style="list-style:none;padding:0;margin:0;flex:1;display:flex;flex-direction:column;gap:9px;font-size:.92rem;color:#dbe3ea;">
+      <div class="reveal" style="background:var(--navy);color:#dde6ee;padding:38px 30px;display:flex;flex-direction:column;position:relative;">
+        <span style="position:absolute;top:18px;right:18px;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--gold);padding:5px 10px;font-weight:700;">Выбирают чаще</span>
+        <p class="kicker" style="color:var(--gold);">Finance Partner</p>
+        <p style="font-size:.86rem;margin:10px 0 0;color:#a9b6c4;">Компания · 50–249 сотрудников</p>
+        <div style="margin:16px 0;"><span style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:1.9rem;color:#fff;">от 36k</span><span style="font-size:.85rem;color:#a9b6c4;"> CHF / год</span></div>
+        <ul style="list-style:none;padding:0;margin:0;flex:1;display:flex;flex-direction:column;gap:10px;font-size:.93rem;color:#dbe3ea;">
           <li>· Всё из Real-Time Books</li><li>· Ежемесячная управленческая отчётность</li><li>· Мультивалюта EUR/CHF</li><li>· Ежеквартальные встречи с финдиректором</li>
         </ul>
-        <p style="margin-top:20px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18);font-size:.86rem;color:#a9b6c4;">До <b style="color:#fff;">80%</b> дешевле собственной команды</p>
+        <p style="margin-top:22px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18);font-size:.86rem;color:#a9b6c4;">До <b style="color:#fff;">80%</b> дешевле собственной команды</p>
       </div>
-      <div class="reveal" style="background:#fff;border:1px solid var(--line);padding:34px 28px;display:flex;flex-direction:column;border-radius:4px;">
-        <span class="eyebrow">Virtual CFO</span>
-        <p style="font-size:.86rem;margin-top:8px;color:var(--gray);">Крупная компания / группа · 250+</p>
-        <div style="margin:18px 0;"><span style="font-weight:800;font-size:1.7rem;color:var(--navy);">от 60k</span><span style="font-size:.85rem;color:var(--gray);"> CHF / год</span></div>
-        <ul style="list-style:none;padding:0;margin:0;flex:1;display:flex;flex-direction:column;gap:9px;font-size:.92rem;color:var(--navy);">
+      <div class="reveal" style="background:#fff;border:1px solid var(--line);padding:36px 30px;display:flex;flex-direction:column;">
+        <p class="kicker">Virtual CFO</p>
+        <p style="font-size:.86rem;margin:10px 0 0;color:var(--grey);">Крупная компания / группа · 250+</p>
+        <div style="margin:16px 0;"><span style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:1.9rem;color:var(--navy);">от 60k</span><span style="font-size:.85rem;color:var(--grey);"> CHF / год</span></div>
+        <ul style="list-style:none;padding:0;margin:0;flex:1;display:flex;flex-direction:column;gap:10px;font-size:.93rem;color:var(--navy);">
           <li>· Всё из Finance Partner</li><li>· Консолидация и бюджетирование</li><li>· Роль внешнего финансового директора</li><li>· Налоговое планирование</li>
         </ul>
-        <p style="margin-top:20px;padding-top:16px;border-top:1px solid var(--line);font-size:.86rem;color:var(--gray);">Дешевле собственного штата вместе с финдиректором</p>
+        <p style="margin-top:22px;padding-top:16px;border-top:1px solid var(--line);font-size:.86rem;color:var(--grey);">Дешевле собственного штата вместе с финдиректором</p>
       </div>
     </div>
-    <p class="reveal" style="text-align:center;font-size:.9rem;color:var(--gray);margin-top:26px;">Точную стоимость мы рассчитываем бесплатно по размеру вашей компании — <a href="#contact" style="color:var(--gold-d);font-weight:700;border-bottom:1px solid var(--gold);">запросить предложение</a>.</p>
+    <p class="reveal" style="text-align:center;font-size:.9rem;color:var(--grey);margin-top:28px;">Точную стоимость рассчитываем бесплатно по размеру вашей компании — <a href="#contact" style="color:var(--gold-d);font-weight:600;border-bottom:1px solid var(--gold);">запросить предложение</a>.</p>
   </div>
 </section>
 
-<!-- ===== КАК РАБОТАЕМ ===== -->
-<section style="padding:88px 0;background:var(--tint);">
-  <div class="wrap">
-    <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 54px;">
-      <p class="eyebrow">Как мы работаем</p>
-      <h2 class="h-sec" style="margin-top:12px;">Три шага — и вы видите бизнес в реальном времени</h2>
-      <div class="rule" style="margin:18px auto 0;"></div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:30px;">
-      <div class="reveal" style="text-align:center;"><div style="width:54px;height:54px;border:1.5px solid var(--gold);color:var(--gold-d);font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border-radius:50%;">1</div><h3 class="upper" style="font-size:1.05rem;margin-bottom:10px;">Вы передаёте документы</h3><p style="font-size:.95rem;">E-mail, фото, PDF-выписки или загрузка через портал. Без внедрения софта и переобучения команды.</p></div>
-      <div class="reveal" style="text-align:center;"><div style="width:54px;height:54px;border:1.5px solid var(--gold);color:var(--gold-d);font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border-radius:50%;">2</div><h3 class="upper" style="font-size:1.05rem;margin-bottom:10px;">Мы ведём учёт в реальном времени</h3><p style="font-size:.95rem;">Проводки, сверка с источником, НДС, зарплата — с контролем качества на каждом шаге. Данные в Швейцарии.</p></div>
-      <div class="reveal" style="text-align:center;"><div style="width:54px;height:54px;border:1.5px solid var(--gold);color:var(--gold-d);font-weight:800;font-size:1.2rem;display:flex;align-items:center;justify-content:center;margin:0 auto 20px;border-radius:50%;">3</div><h3 class="upper" style="font-size:1.05rem;margin-bottom:10px;">Вы видите картину каждый день</h3><p style="font-size:.95rem;">Баланс, прибыль, НДС, аналитика по филиалам — в реальном времени, плюс отчётность на уровне финдиректора.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== ФОТО-БЛОК (притемнённый фон) ===== -->
+<!-- ===== CTA-ПОЛОСА (как «Haben Sie noch Fragen?») ===== -->
 <section style="position:relative;overflow:hidden;background:var(--navy);">
-  <img src="assets/img/office.jpg?v=1" alt="Современная переговорная" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 50%;">
-  <div style="position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,31,51,.92) 0%,rgba(8,31,51,.78) 50%,rgba(8,31,51,.55) 100%);"></div>
-  <div class="wrap" style="position:relative;padding:clamp(74px,9vw,104px) 26px;">
-    <div class="reveal" style="max-width:600px;color:#fff;">
-      <p class="eyebrow" style="color:var(--gold);">Реальное время</p>
-      <h2 class="upper" style="color:#fff;font-size:clamp(1.65rem,2.9vw,2.35rem);letter-spacing:-.01em;line-height:1.18;margin:16px 0 0;">Финансовая картина вашей компании — открыта каждый день</h2>
-      <div class="rule" style="margin:22px 0 24px;"></div>
-      <p style="color:#cdd6df;max-width:510px;font-size:1.04rem;">Не отчёт раз в квартал, а актуальные цифры в любой момент: баланс, прибыль, НДС, движение денег. Вы решаете на основе сегодняшних данных, а не прошлого периода.</p>
-      <div style="display:flex;gap:42px;margin-top:34px;flex-wrap:wrap;">
-        <div><div style="font-weight:800;font-size:1.9rem;color:var(--gold);">24/7</div><div style="font-size:.84rem;color:#a9b6c4;margin-top:5px;">Онлайн-доступ к вашим цифрам</div></div>
-        <div><div style="font-weight:800;font-size:1.9rem;color:var(--gold);">CH</div><div style="font-size:.84rem;color:#a9b6c4;margin-top:5px;">Данные в Швейцарии</div></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ===== РЕГИОН ===== -->
-<section id="region" style="padding:88px 0;background:#fff;">
-  <div class="wrap">
-    <div class="reveal" style="text-align:center;max-width:640px;margin:0 auto 52px;">
-      <p class="eyebrow">Регион</p>
-      <h2 class="h-sec" style="margin-top:12px;">Рядом с вами — в Цуге и Люцерне</h2>
-      <div class="rule" style="margin:18px auto 0;"></div>
-    </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;">
-      <div class="reveal card"><h3 style="color:var(--gold-d);">Цуг — торгово-холдинговый хаб</h3><p>Торговые, холдинговые и финансовые компании, многие работают с Европой. Параллельный учёт <b style="color:var(--navy);">EUR/CHF</b> до раппена мы ведём точно под ваши внешнеторговые операции. В самом дорогом по зарплатам кантоне это даёт масштаб без собственной финансовой команды.</p></div>
-      <div class="reveal card"><h3 style="color:var(--gold-d);">Люцерн — операционный бизнес</h3><p>Широкий сектор средних компаний: производство, услуги, торговля. Учёт в реальном времени по направлениям и филиалам показывает, где вы зарабатываете, — и даёт картину на уровне крупной компании без её штата.</p></div>
+  <img src="assets/img/building.jpg?v=2" alt="Центральная Швейцария" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.18;">
+  <div class="wrap" style="position:relative;padding:clamp(56px,7vw,84px) 28px;text-align:center;">
+    <div class="reveal">
+      <p class="kicker" style="color:var(--gold);">Остались вопросы?</p>
+      <div class="sep center"></div>
+      <h2 class="h-sec" style="color:#fff;margin:16px 0 26px;">Начните с 90-дневного пилота — без риска</h2>
+      <a href="#contact" class="btn">Связаться с нами</a>
     </div>
   </div>
 </section>
 
 <!-- ===== КОНТАКТ ===== -->
-<section id="contact" style="padding:88px 0;background:var(--tint);">
-  <div class="wrap" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;">
+<section id="contact" class="pad" style="background:var(--light);">
+  <div class="wrap two-col" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;">
     <div class="reveal">
-      <p class="eyebrow">Связаться</p>
-      <h2 class="h-sec" style="margin:12px 0 18px;">Начните с 90-дневного пилота</h2>
-      <div class="rule" style="margin-bottom:24px;"></div>
+      <p class="kicker">Контакт</p>
+      <div class="sep"></div>
+      <h2 class="h-sec" style="margin:16px 0 18px;">Поговорим о вашей компании</h2>
       <p class="lead" style="max-width:440px;margin-bottom:30px;">Выберите одно-два направления. Мы ведём учёт в реальном времени, вы проверяете каждую цифру и сами решаете о продолжении — увидев качество на собственных данных.</p>
       <div style="display:flex;flex-direction:column;gap:18px;font-size:.96rem;">
-        <div><div class="upper" style="font-weight:800;color:var(--navy);letter-spacing:.03em;margin-bottom:5px;">Merlas Swiss AG</div><p style="color:var(--navy);">Via San Gottardo 118 · 6648 Minusio</p><p style="color:var(--gray);font-size:.9rem;">Обслуживаем компании в Цуге и Люцерне</p></div>
-        <div style="color:var(--navy);"><p><a href="mailto:info@merlas.swiss" style="color:var(--gold-d);border-bottom:1px solid var(--gold);">info@merlas.swiss</a></p></div>
+        <div><div style="font-family:'Bodoni Moda',serif;font-weight:600;font-size:1.15rem;color:var(--navy);margin-bottom:5px;">Merlas Swiss AG</div><p style="color:var(--navy);margin:0;">Via San Gottardo 118 · 6648 Minusio</p><p style="color:var(--grey);font-size:.9rem;margin:4px 0 0;">Обслуживаем компании в Цуге и Люцерне</p></div>
+        <div style="color:var(--navy);"><a href="mailto:info@merlas.swiss" style="color:var(--gold-d);border-bottom:1px solid var(--gold);">info@merlas.swiss</a></div>
       </div>
     </div>
-    <div class="reveal" style="background:#fff;border:1px solid var(--line);padding:38px 32px;border-radius:4px;">
+    <div class="reveal" style="background:#fff;border:1px solid var(--line);padding:38px 34px;">
       <form onsubmit="return false" style="display:flex;flex-direction:column;gap:15px;">
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:15px;">
-          <div><label style="display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gray);margin-bottom:6px;">Имя</label><input type="text" style="width:100%;border:1px solid var(--line);padding:11px 13px;font-family:inherit;font-size:.95rem;border-radius:3px;"></div>
-          <div><label style="display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gray);margin-bottom:6px;">Компания</label><input type="text" style="width:100%;border:1px solid var(--line);padding:11px 13px;font-family:inherit;font-size:.95rem;border-radius:3px;"></div>
+          <div><label style="display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--grey);margin-bottom:6px;">Имя</label><input type="text" style="width:100%;border:1px solid var(--line);padding:12px 13px;font-family:inherit;font-size:.95rem;"></div>
+          <div><label style="display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--grey);margin-bottom:6px;">Компания</label><input type="text" style="width:100%;border:1px solid var(--line);padding:12px 13px;font-family:inherit;font-size:.95rem;"></div>
         </div>
-        <div><label style="display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gray);margin-bottom:6px;">E-mail</label><input type="email" style="width:100%;border:1px solid var(--line);padding:11px 13px;font-family:inherit;font-size:.95rem;border-radius:3px;"></div>
-        <div><label style="display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gray);margin-bottom:6px;">Телефон</label><input type="tel" style="width:100%;border:1px solid var(--line);padding:11px 13px;font-family:inherit;font-size:.95rem;border-radius:3px;"></div>
-        <div><label style="display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--gray);margin-bottom:6px;">Сообщение</label><textarea rows="3" style="width:100%;border:1px solid var(--line);padding:11px 13px;font-family:inherit;font-size:.95rem;border-radius:3px;"></textarea></div>
+        <div><label style="display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--grey);margin-bottom:6px;">E-mail</label><input type="email" style="width:100%;border:1px solid var(--line);padding:12px 13px;font-family:inherit;font-size:.95rem;"></div>
+        <div><label style="display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--grey);margin-bottom:6px;">Телефон</label><input type="tel" style="width:100%;border:1px solid var(--line);padding:12px 13px;font-family:inherit;font-size:.95rem;"></div>
+        <div><label style="display:block;font-size:.76rem;text-transform:uppercase;letter-spacing:.1em;color:var(--grey);margin-bottom:6px;">Сообщение</label><textarea rows="3" style="width:100%;border:1px solid var(--line);padding:12px 13px;font-family:inherit;font-size:.95rem;"></textarea></div>
         <button class="btn" style="width:100%;border:none;">Запросить предложение</button>
-        <p style="text-align:center;font-size:.78rem;color:var(--gray);">Демо-форма. Реальная отправка подключается при запуске.</p>
+        <p style="text-align:center;font-size:.78rem;color:var(--grey);">Демо-форма. Реальная отправка подключается при запуске.</p>
       </form>
     </div>
   </div>
 </section>
 
 <!-- ===== FOOTER ===== -->
-<footer style="background:var(--navy-d);color:rgba(255,255,255,.7);padding:60px 0 30px;">
+<footer style="background:var(--navy-d);color:rgba(255,255,255,.7);padding:64px 0 30px;">
   <div class="wrap">
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:40px;padding-bottom:38px;border-bottom:1px solid rgba(255,255,255,.1);">
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:42px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.1);">
       <div>
-        <a href="#top" style="font-weight:800;font-size:1.5rem;letter-spacing:.01em;color:#fff;"><span style="color:var(--gold);">merlas</span> swiss</a>
-        <p style="font-size:.9rem;color:rgba(255,255,255,.55);max-width:270px;margin-top:14px;">Финансовый и страховой консалтинг. Бухгалтерия и финансовая функция в реальном времени для компаний Цуга и Люцерна.</p>
+        <img src="assets/img/logo-merlas.png?v=2" alt="Merlas Swiss AG" style="height:48px;width:auto;display:block;margin-bottom:16px;">
+        <p style="font-size:.9rem;color:rgba(255,255,255,.55);max-width:270px;margin:0;">Финансовый и страховой консалтинг. Бухгалтерия и финансовая функция в реальном времени для компаний Цуга и Люцерна.</p>
       </div>
       <div style="font-size:.9rem;">
-        <h4 class="upper" style="color:#fff;font-size:.86rem;letter-spacing:.1em;margin-bottom:14px;">Контакт</h4>
-        <p style="margin-bottom:6px;">Via San Gottardo 118</p>
-        <p style="margin-bottom:6px;">6648 Minusio</p>
-        <p style="color:rgba(255,255,255,.55);">info@merlas.swiss</p>
+        <h4 style="font-family:'Bodoni Moda',serif;color:#fff;font-size:1.1rem;margin-bottom:14px;">Контакт</h4>
+        <p style="margin:0 0 6px;">Via San Gottardo 118</p>
+        <p style="margin:0 0 6px;">6648 Minusio</p>
+        <p style="color:rgba(255,255,255,.55);margin:0;">info@merlas.swiss</p>
       </div>
       <div>
-        <h4 class="upper" style="color:#fff;font-size:.86rem;letter-spacing:.1em;margin-bottom:14px;">Технология реального времени</h4>
-        <a href="https://arvut.ch" target="_blank" rel="noopener" style="font-weight:800;color:var(--green);font-size:1.5rem;letter-spacing:.01em;">Arvut</a>
+        <h4 style="font-family:'Bodoni Moda',serif;color:#fff;font-size:1.1rem;margin-bottom:14px;">Технология реального времени</h4>
+        <a href="https://arvut.ch" target="_blank" rel="noopener" style="font-family:'Bodoni Moda',serif;color:var(--green);font-weight:700;font-size:1.5rem;">Arvut</a>
         <p style="font-size:.86rem;color:rgba(255,255,255,.55);margin-top:8px;">Автоматизация и бухгалтерская платформа.<br>Данные размещены в Швейцарии.</p>
       </div>
     </div>
@@ -323,17 +378,21 @@ h1,h2,h3,h4{font-family:'Manrope',sans-serif;color:var(--navy);font-weight:800;l
 <button id="toTop" aria-label="Наверх"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
 
 <script>
+// reveal при скролле (fadeInUp), как у Merlas
 if('IntersectionObserver' in window){
-  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;const sibs=[...el.parentElement.children].filter(c=>c.classList.contains('reveal'));const idx=Math.max(0,sibs.indexOf(el));el.style.transitionDelay=(idx*0.09)+'s';el.classList.add('in');io.unobserve(el);setTimeout(()=>{el.style.transitionDelay='';},900+idx*90);})},{threshold:.12});
+  const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(!e.isIntersecting)return;const el=e.target;const sibs=[...el.parentElement.children].filter(c=>c.classList.contains('reveal'));const idx=Math.max(0,sibs.indexOf(el));el.style.transitionDelay=(idx*0.1)+'s';el.classList.add('in');io.unobserve(el);setTimeout(()=>{el.style.transitionDelay='';},1000+idx*100);})},{threshold:.12});
   document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
   addEventListener('load',()=>setTimeout(()=>document.querySelectorAll('.reveal:not(.in)').forEach(el=>{if(el.getBoundingClientRect().top<innerHeight)el.classList.add('in');}),2400));
-}else{
-  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));
-}
-document.querySelectorAll('a[href="#top"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});}));
+}else{document.querySelectorAll('.reveal').forEach(el=>el.classList.add('in'));}
+// бургер
+const burger=document.getElementById('burger'),menu=document.getElementById('menu');
+burger.addEventListener('click',()=>menu.classList.toggle('open'));
+menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>menu.classList.remove('open')));
+// to-top
 const toTop=document.getElementById('toTop');
-addEventListener('scroll',()=>{toTop.classList.toggle('show',scrollY>500);},{passive:true});
+addEventListener('scroll',()=>{toTop.classList.toggle('show',scrollY>600);},{passive:true});
 toTop.addEventListener('click',()=>window.scrollTo({top:0,behavior:'smooth'}));
+document.querySelectorAll('a[href="#top"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();window.scrollTo({top:0,behavior:'smooth'});}));
 </script>
 </body>
 </html>
